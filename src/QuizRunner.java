@@ -1,3 +1,4 @@
+import Questions.CheckBoxQuestion;
 import Questions.MultipleChoiceQuesiton;
 import Questions.Question;
 import Questions.TrueFalseQuestion;
@@ -35,6 +36,15 @@ public class QuizRunner {
         whichQB.addPossibleAnswer("Blake Bortles");
         whichQB.addPossibleAnswer("Jimmy Garoppolo");
         quiz.addQuestion(whichQB);
+
+        // Checkbox Questions
+        CheckBoxQuestion pythonFrameworks = new CheckBoxQuestion();
+        pythonFrameworks.setQuestion("Which are Python frameworks?");
+        pythonFrameworks.addCorrectAnswer("Flask");
+        pythonFrameworks.addCorrectAnswer("Django");
+        pythonFrameworks.addPossibleAnswer("Angular");
+        pythonFrameworks.addPossibleAnswer("React");
+        quiz.addQuestion(pythonFrameworks);
 
         quiz.runQuiz();
 

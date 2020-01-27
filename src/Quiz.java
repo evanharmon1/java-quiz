@@ -1,7 +1,4 @@
-import Questions.BinaryQuestion;
-import Questions.MultipleChoiceQuesiton;
-import Questions.PossibleAnswersQuestion;
-import Questions.Question;
+import Questions.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +54,7 @@ public class Quiz {
 
         for (Question question : questions) {
             question.askQuestion();
+
             if (question instanceof BinaryQuestion) {
                 boolean attemptedAnswer = in.nextBoolean();
                 in.nextLine();
@@ -71,6 +69,20 @@ public class Quiz {
                     recordCorrectAnswer();
                 }
             }
+            else if (question instanceof CheckBoxQuestion) {
+                List<Integer> attemptedAnswers = new ArrayList<>();
+                int attemptedAnswer = in.nextInt();
+                attemptedAnswers.add(attemptedAnswer);
+                while (attemptedAnswer != 0) {
+                    attemptedAnswer = in.nextInt();
+                    attemptedAnswers.add(attemptedAnswer);
+                }
+                attemptedAnswers.remove(attemptedAnswers.size() - 1);
+                if (((CheckBoxQuestion) question).checkAnswer(attemptedAnswers)) {
+                    recordCorrectAnswer();
+                }
+            }
+
         }
 
         in.close();
