@@ -1,5 +1,3 @@
 package Questions;
 
-public class TrueFalseQuestion extends Question {
-
-}
+public class TrueFalseQuestion extends BinaryQuestion { }
