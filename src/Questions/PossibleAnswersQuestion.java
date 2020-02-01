@@ -10,7 +10,7 @@ import java.util.Scanner;
 public abstract class PossibleAnswersQuestion extends Question {
 
     private String correctAnswer;
-    private int correctChoice;
+    private Integer correctChoice;
     private List<String> possibleAnswers = new ArrayList<>();
 
     public String getCorrectAnswer() {
@@ -20,6 +20,14 @@ public abstract class PossibleAnswersQuestion extends Question {
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
         this.addPossibleAnswer(correctAnswer);
+    }
+
+    public <T> T  getCorrectChoice() {
+        return (T) correctChoice;
+    }
+
+    public void setCorrectChoice(int correctChoice) {
+        this.correctChoice = correctChoice;
     }
 
     public void askQuestion() {
@@ -34,15 +42,9 @@ public abstract class PossibleAnswersQuestion extends Question {
         }
     }
 
-    public int getUserAnswer(Scanner in) {
-        int userAnswer = in.nextInt();
-        in.nextLine();
-        return userAnswer;
-    }
+    public abstract <T> T getUserAnswer(Scanner in);
 
-    public boolean checkAnswer(int actualAnswer) {
-        return actualAnswer == correctChoice;
-    }
+    public abstract <T> boolean checkAnswer(T t);
 
     public List<String> getPossibleAnswers() {
         Collections.shuffle(this.possibleAnswers);

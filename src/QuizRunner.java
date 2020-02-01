@@ -1,7 +1,4 @@
-import Questions.CheckBoxQuestion;
-import Questions.MultipleChoiceQuesiton;
-import Questions.Question;
-import Questions.TrueFalseQuestion;
+import Questions.*;
 
 import java.util.Scanner;
 
@@ -37,7 +34,7 @@ public class QuizRunner {
         whichQB.addPossibleAnswer("Jimmy Garoppolo");
         quiz.addQuestion(whichQB);
 
-        // Checkbox Questions
+        // Checkbox Question
         CheckBoxQuestion pythonFrameworks = new CheckBoxQuestion();
         pythonFrameworks.setQuestion("Which are Python frameworks?");
         pythonFrameworks.addCorrectAnswer("Flask");
@@ -45,6 +42,12 @@ public class QuizRunner {
         pythonFrameworks.addPossibleAnswer("Angular");
         pythonFrameworks.addPossibleAnswer("React");
         quiz.addQuestion(pythonFrameworks);
+
+        // Short Answer Question
+//        ShortAnswerQuestion abstractMethod = new ShortAnswerQuestion();
+//        abstractMethod.setQuestion("What is an abstract method?");
+//        abstractMethod.setCorrectAnswer("A class that can't be instantiated");
+//        quiz.addQuestion(abstractMethod);
 
         quiz.runQuiz();
 

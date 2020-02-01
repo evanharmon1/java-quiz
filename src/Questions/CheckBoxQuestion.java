@@ -18,6 +18,7 @@ public class CheckBoxQuestion extends PossibleAnswersQuestion {
         this.correctAnswers = correctAnswers;
     }
 
+    @Override
     public List<Integer> getCorrectChoice() {
         return correctChoice;
     }
@@ -48,9 +49,9 @@ public class CheckBoxQuestion extends PossibleAnswersQuestion {
         }
     }
 
-    public List<Integer> getUserAnswers(Scanner in) {
+    public <T> T getUserAnswer(Scanner in) {
         List<Integer> userAnswers = new ArrayList<>();
-        int attemptedAnswer = in.nextInt();
+        Integer attemptedAnswer = in.nextInt();
         userAnswers.add(attemptedAnswer);
         while (attemptedAnswer != 0) {
             attemptedAnswer = in.nextInt();
@@ -58,10 +59,10 @@ public class CheckBoxQuestion extends PossibleAnswersQuestion {
         }
         userAnswers.remove(userAnswers.size() - 1);
         in.nextLine();
-        return userAnswers;
+        return (T) userAnswers;
     }
 
-    public boolean checkAnswer(List<Integer> actualAnswer) {
-        return actualAnswer.equals(correctChoice);
+    public <T> boolean checkAnswer(T userAnswer) {
+        return userAnswer.equals(correctChoice);
     }
 }

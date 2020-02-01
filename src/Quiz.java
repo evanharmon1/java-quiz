@@ -60,19 +60,12 @@ public class Quiz {
                     recordCorrectAnswer();
                 }
             }
-            else if (question instanceof MultipleChoiceQuesiton) {
-                MultipleChoiceQuesiton multipleChoiceQuesiton = (MultipleChoiceQuesiton) question;
-                if (multipleChoiceQuesiton.checkAnswer(multipleChoiceQuesiton.getUserAnswer(in))) {
+            else if (question instanceof PossibleAnswersQuestion) {
+                PossibleAnswersQuestion possibleAnswersQuestion = (PossibleAnswersQuestion) question;
+                if (possibleAnswersQuestion.checkAnswer(possibleAnswersQuestion.getUserAnswer(in))) {
                     recordCorrectAnswer();
                 }
             }
-            else if (question instanceof CheckBoxQuestion) {
-                CheckBoxQuestion checkBoxQuestion = (CheckBoxQuestion) question;
-                if (checkBoxQuestion.checkAnswer(checkBoxQuestion.getUserAnswers(in))) {
-                    recordCorrectAnswer();
-                }
-            }
-
         }
 
         in.close();
