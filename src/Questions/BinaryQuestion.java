@@ -18,8 +18,13 @@ public abstract class BinaryQuestion extends Question {
         super.displayQuestion();
     }
 
+    public boolean getUserAnswer(Scanner in) {
+        boolean userAnswer = in.nextBoolean();
+        in.nextLine();
+        return userAnswer;
+    }
+
     public boolean checkAnswer(boolean actualAnswer) {
         return actualAnswer == correctAnswer;
     }
-
 }

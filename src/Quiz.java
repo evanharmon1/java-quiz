@@ -39,8 +39,7 @@ public class Quiz {
     }
 
     public double calculateGrade() {
-        double grade = ((double)numberCorrect / questions.size()) * 100;
-        return grade;
+        return ((double)numberCorrect / questions.size()) * 100;
     }
 
     public void recordCorrectAnswer() {
@@ -56,29 +55,20 @@ public class Quiz {
             question.askQuestion();
 
             if (question instanceof BinaryQuestion) {
-                boolean attemptedAnswer = in.nextBoolean();
-                in.nextLine();
-                if (((BinaryQuestion) question).checkAnswer(attemptedAnswer)) {
+                BinaryQuestion binaryQuestion = (BinaryQuestion) question;
+                if (binaryQuestion.checkAnswer(binaryQuestion.getUserAnswer(in))) {
                     recordCorrectAnswer();
                 }
             }
             else if (question instanceof MultipleChoiceQuesiton) {
-                int attemptedAnswer = in.nextInt();
-                in.nextLine();
-                if (((MultipleChoiceQuesiton) question).checkAnswer(attemptedAnswer)) {
+                MultipleChoiceQuesiton multipleChoiceQuesiton = (MultipleChoiceQuesiton) question;
+                if (multipleChoiceQuesiton.checkAnswer(multipleChoiceQuesiton.getUserAnswer(in))) {
                     recordCorrectAnswer();
                 }
             }
             else if (question instanceof CheckBoxQuestion) {
-                List<Integer> attemptedAnswers = new ArrayList<>();
-                int attemptedAnswer = in.nextInt();
-                attemptedAnswers.add(attemptedAnswer);
-                while (attemptedAnswer != 0) {
-                    attemptedAnswer = in.nextInt();
-                    attemptedAnswers.add(attemptedAnswer);
-                }
-                attemptedAnswers.remove(attemptedAnswers.size() - 1);
-                if (((CheckBoxQuestion) question).checkAnswer(attemptedAnswers)) {
+                CheckBoxQuestion checkBoxQuestion = (CheckBoxQuestion) question;
+                if (checkBoxQuestion.checkAnswer(checkBoxQuestion.getUserAnswers(in))) {
                     recordCorrectAnswer();
                 }
             }

@@ -2,6 +2,7 @@ package Questions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 
 public class CheckBoxQuestion extends PossibleAnswersQuestion {
@@ -34,16 +35,30 @@ public class CheckBoxQuestion extends PossibleAnswersQuestion {
         this.correctChoice.add(correctChoice);
     }
 
+    @Override
     public void askQuestion() {
-        super.askQuestion();
+        displayQuestion();
         System.out.println("Type the number next to EACH correct answer and press enter. Enter 0 when finished.");
         int possibleAnswerNumber = 1;
-        for (String possibleAnswer : super.getPossibleAnswers()) {
+        for (String possibleAnswer : getPossibleAnswers()) {
             if (correctAnswers.contains(possibleAnswer)) {
                 correctChoice.add(possibleAnswerNumber);
             }
             System.out.println(possibleAnswerNumber++ + ") " + possibleAnswer);
         }
+    }
+
+    public List<Integer> getUserAnswers(Scanner in) {
+        List<Integer> userAnswers = new ArrayList<>();
+        int attemptedAnswer = in.nextInt();
+        userAnswers.add(attemptedAnswer);
+        while (attemptedAnswer != 0) {
+            attemptedAnswer = in.nextInt();
+            userAnswers.add(attemptedAnswer);
+        }
+        userAnswers.remove(userAnswers.size() - 1);
+        in.nextLine();
+        return userAnswers;
     }
 
     public boolean checkAnswer(List<Integer> actualAnswer) {
