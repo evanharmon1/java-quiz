@@ -13,6 +13,11 @@ public abstract class TextualAnswerQuestion extends Question {
         this.correctAnswer = correctAnswer;
     }
 
+    @Override
+    public void askQuestion() {
+        displayQuestion();
+    }
+
     public String getUserAnswer(Scanner in) {
         return in.nextLine();
     }
@@ -22,4 +27,6 @@ public abstract class TextualAnswerQuestion extends Question {
     }
 
     public abstract boolean isValid(String userAnswer);
+
+    public abstract void printInvalidAnswerMessage();
 }

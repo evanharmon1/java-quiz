@@ -22,7 +22,7 @@ public abstract class PossibleAnswersQuestion extends Question {
         this.addPossibleAnswer(correctAnswer);
     }
 
-    public <T> T  getCorrectChoice() {
+    public <T> T getCorrectChoice() {
         return (T) correctChoice;
     }
 

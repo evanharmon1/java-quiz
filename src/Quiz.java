@@ -66,6 +66,17 @@ public class Quiz {
                     recordCorrectAnswer();
                 }
             }
+            else if (question instanceof TextualAnswerQuestion) {
+                TextualAnswerQuestion textualAnswerQuestion = (TextualAnswerQuestion) question;
+                String userAnswer = textualAnswerQuestion.getUserAnswer(in);
+                while (!textualAnswerQuestion.isValid(userAnswer)) {
+                    textualAnswerQuestion.printInvalidAnswerMessage();
+                    userAnswer = textualAnswerQuestion.getUserAnswer(in);
+                }
+                if (textualAnswerQuestion.checkAnswer(userAnswer)) {
+                    recordCorrectAnswer();
+                }
+            }
         }
 
         in.close();

@@ -44,10 +44,16 @@ public class QuizRunner {
         quiz.addQuestion(pythonFrameworks);
 
         // Short Answer Question
-//        ShortAnswerQuestion abstractMethod = new ShortAnswerQuestion();
-//        abstractMethod.setQuestion("What is an abstract method?");
-//        abstractMethod.setCorrectAnswer("A class that can't be instantiated");
-//        quiz.addQuestion(abstractMethod);
+        ShortAnswerQuestion abstractMethod = new ShortAnswerQuestion();
+        abstractMethod.setQuestion("What is an abstract method?");
+        abstractMethod.setCorrectAnswer("A class that can't be instantiated");
+        quiz.addQuestion(abstractMethod);
+
+        // Paragraph Answer Question
+        ParagraphAnswerQuestion pillars = new ParagraphAnswerQuestion();
+        pillars.setQuestion("What are the 4 pillars of object-oriented programming?");
+        pillars.setCorrectAnswer("Abstraction, encapsulation, inheritance, and polymorophism. They are wondrous.");
+        quiz.addQuestion(pillars);
 
         quiz.runQuiz();
 
