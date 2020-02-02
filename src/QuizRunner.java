@@ -1,7 +1,5 @@
 import Questions.*;
 
-import java.util.Scanner;
-
 public class QuizRunner {
     public static void main(String[] args) {
         Quiz quiz = new Quiz();
@@ -55,6 +53,12 @@ public class QuizRunner {
         pillars.setCorrectAnswer("Abstraction, encapsulation, inheritance, and polymorophism. They are wondrous.");
         quiz.addQuestion(pillars);
 
+        // Linear Scale Question
+        LinearScaleQuestion letterGrades = new LinearScaleQuestion();
+        letterGrades.setQuestion("Give a score for a 'B' letter grade. E.g., for an F, you could enter any integer between 0 and 59.");
+        letterGrades.setCorrectAnswerLowerBound(80);
+        letterGrades.setCorrectAnswerUpperBound(89);
+        quiz.addQuestion(letterGrades);
         quiz.runQuiz();
 
         System.out.println("You got a " + quiz.getGrade() + "%");

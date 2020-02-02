@@ -77,6 +77,12 @@ public class Quiz {
                     recordCorrectAnswer();
                 }
             }
+            else if (question instanceof LinearScaleQuestion) {
+                LinearScaleQuestion linearScaleQuestion = (LinearScaleQuestion) question;
+                if (linearScaleQuestion.checkAnswer(linearScaleQuestion.getUserAnswer(in))) {
+                    recordCorrectAnswer();
+                }
+            }
         }
 
         in.close();

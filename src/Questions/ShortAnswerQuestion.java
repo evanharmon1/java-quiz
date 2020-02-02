@@ -1,7 +1,5 @@
 package Questions;
 
-import java.util.Scanner;
-
 public class ShortAnswerQuestion extends TextualAnswerQuestion {
 
     @Override
